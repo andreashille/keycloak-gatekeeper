@@ -26,7 +26,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/coreos/go-oidc/jose"
+	"github.com/andreashille/go-oidc/jose"
 	"github.com/stretchr/testify/assert"
 )
 

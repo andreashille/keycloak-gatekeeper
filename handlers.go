@@ -30,7 +30,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/coreos/go-oidc/oauth2"
+	"github.com/andreashille/go-oidc/oauth2"
 
 	"github.com/pressly/chi"
 	"go.uber.org/zap"

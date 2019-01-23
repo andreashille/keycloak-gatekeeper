@@ -24,7 +24,7 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/purell"
-	"github.com/coreos/go-oidc/jose"
+	"github.com/andreashille/go-oidc/jose"
 	"github.com/go-chi/chi/middleware"
 	uuid "github.com/satori/go.uuid"
 	"github.com/unrolled/secure"

@@ -40,7 +40,7 @@
 [[projects]]
   branch = "v1"
   digest = "1:6a503e232df389d94ebb97dfb22d4ae463b6e2f351660613e11d9e42f57ab6df"
-  name = "github.com/coreos/go-oidc"
+  name = "github.com/andreashille/go-oidc"
   packages = [
     "http",
     "jose",
@@ -320,9 +320,9 @@
     "github.com/PuerkitoBio/purell",
     "github.com/armon/go-proxyproto",
     "github.com/boltdb/bolt",
-    "github.com/coreos/go-oidc/jose",
-    "github.com/coreos/go-oidc/oauth2",
-    "github.com/coreos/go-oidc/oidc",
+    "github.com/andreashille/go-oidc/jose",
+    "github.com/andreashille/go-oidc/oauth2",
+    "github.com/andreashille/go-oidc/oidc",
     "github.com/elazarl/goproxy",
     "github.com/fsnotify/fsnotify",
     "github.com/go-chi/chi/middleware",

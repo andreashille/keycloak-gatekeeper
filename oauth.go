@@ -24,9 +24,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/coreos/go-oidc/jose"
-	"github.com/coreos/go-oidc/oauth2"
-	"github.com/coreos/go-oidc/oidc"
+	"github.com/andreashille/go-oidc/jose"
+	"github.com/andreashille/go-oidc/oauth2"
+	"github.com/andreashille/go-oidc/oidc"
 )
 
 // getOAuthClient returns a oauth2 client from the openid client
