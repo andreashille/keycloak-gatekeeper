@@ -34,7 +34,7 @@
   version = "1.4.7"
 
 [[constraint]]
-  branch = "v1"
+  branch = "master"
   name = "github.com/andreashille/go-oidc"
 
 [[constraint]]

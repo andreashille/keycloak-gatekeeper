@@ -141,6 +141,8 @@ type Resource struct {
 // Config is the configuration for the proxy
 type Config struct {
 	// ConfigFile is the binding interface
+	IgnoreClaims []string `json:"ignore-claims" yaml:"ignore-claims" usage:"claims not used in validation, current options '['aud', 'iss']'"`
+	// ConfigFile is the binding interface
 	ConfigFile string `json:"config" yaml:"config" usage:"path the a configuration file" env:"CONFIG_FILE"`
 	// Listen is the binding interface
 	Listen string `json:"listen" yaml:"listen" usage:"the interface the service should be listening on" env:"LISTEN"`

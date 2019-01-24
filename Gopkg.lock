@@ -17,6 +17,20 @@
   revision = "5bd2802263f21d8788851d5305584c82a5c75d7e"
 
 [[projects]]
+  branch = "master"
+  digest = "1:2f65c7d3feb0835c704004c8d04a1a0572f839dfd00980104c6306d0476d0c77"
+  name = "github.com/andreashille/go-oidc"
+  packages = [
+    "http",
+    "jose",
+    "key",
+    "oauth2",
+    "oidc",
+  ]
+  pruneopts = "UT"
+  revision = "307f989c1dcf777f69d432ac8c4972f51a3f040e"
+
+[[projects]]
   digest = "1:1c19f0cbf37823c0af41a6fa5c96f0e31f899202efd91e35ab0a4410a04a4244"
   name = "github.com/armon/go-proxyproto"
   packages = ["."]
@@ -36,20 +50,6 @@
   packages = ["."]
   pruneopts = "UT"
   revision = "144418e1475d8bf7abbdc48583500f1a20c62ea7"
-
-[[projects]]
-  branch = "v1"
-  digest = "1:6a503e232df389d94ebb97dfb22d4ae463b6e2f351660613e11d9e42f57ab6df"
-  name = "github.com/andreashille/go-oidc"
-  packages = [
-    "http",
-    "jose",
-    "key",
-    "oauth2",
-    "oidc",
-  ]
-  pruneopts = "UT"
-  revision = "e860bd55bfa7d7cb35d30d26a167982584f616b0"
 
 [[projects]]
   digest = "1:6fda0d7f5e52b081e075775b1ecebf1ea0c923e7be33604ed0225ae078e701b5"
@@ -318,11 +318,11 @@
   analyzer-version = 1
   input-imports = [
     "github.com/PuerkitoBio/purell",
-    "github.com/armon/go-proxyproto",
-    "github.com/boltdb/bolt",
     "github.com/andreashille/go-oidc/jose",
     "github.com/andreashille/go-oidc/oauth2",
     "github.com/andreashille/go-oidc/oidc",
+    "github.com/armon/go-proxyproto",
+    "github.com/boltdb/bolt",
     "github.com/elazarl/goproxy",
     "github.com/fsnotify/fsnotify",
     "github.com/go-chi/chi/middleware",
