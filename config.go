@@ -49,6 +49,8 @@ func newDefaultConfig() *Config {
 		MaxIdleConns:                  100,
 		MaxIdleConnsPerHost:           50,
 		OAuthURI:                      "/oauth",
+		CallbackName:                  "/callback",
+		CallbackURISuffix:             "/oauth/callback",
 		OpenIDProviderTimeout:         30 * time.Second,
 		PreserveHost:                  false,
 		SelfSignedTLSExpiration:       3 * time.Hour,

@@ -21,6 +21,8 @@ import (
 	"time"
 )
 
+const callbackURL = "/callback"
+
 func TestDebugHandler(t *testing.T) {
 	c := newFakeKeycloakConfig()
 	c.Resources = make([]*Resource, 0)

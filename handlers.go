@@ -61,7 +61,7 @@ func (r *oauthProxy) getRedirectionURL(w http.ResponseWriter, req *http.Request)
 		w.WriteHeader(http.StatusForbidden)
 		return ""
 	}
-	return fmt.Sprintf("%s%s", redirect, r.config.WithOAuthURI("callback"))
+	return fmt.Sprintf("%s%s", redirect, r.config.WithOAuthURI(r.config.CallbackName))
 }
 
 // oauthAuthorizationHandler is responsible for performing the redirection to oauth provider
@@ -292,7 +292,7 @@ func (r *oauthProxy) logoutHandler(w http.ResponseWriter, req *http.Request) {
 			redirectURL = req.URL.Query().Get("redirect")
 			if redirectURL == "" {
 				// than we can default to redirection url
-				redirectURL = strings.TrimSuffix(r.config.RedirectionURL, "/oauth/callback")
+				redirectURL = strings.TrimSuffix(r.config.RedirectionURL, r.config.CallbackURISuffix)
 			}
 		}
 	}
