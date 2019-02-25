@@ -196,20 +196,11 @@ func (r *oauthProxy) createReverseProxy() error {
 	}
 
 	// step: add the routing for oauth
-	engine.With(proxyDenyMiddleware).Route(r.config.OAuthURI, func(e chi.Router) {
-		e.MethodNotAllowed(methodNotAllowHandlder)
-		e.HandleFunc(authorizationURL, r.oauthAuthorizationHandler)
-		e.Get(callbackURL, r.oauthCallbackHandler)
-		e.Get(expiredURL, r.expirationHandler)
-		e.Get(healthURL, r.healthHandler)
-		e.Get(logoutURL, r.logoutHandler)
-		e.Get(tokenURL, r.tokenHandler)
-		e.Post(loginURL, r.loginHandler)
-		if r.config.EnableMetrics {
-			r.log.Info("enabled the service metrics middleware", zap.String("path", r.config.WithOAuthURI(metricsURL)))
-			e.Get(metricsURL, r.proxyMetricsHandler)
-		}
-	})
+	if r.config.OAuthURI == "" {
+		engine.With(proxyDenyMiddleware).Group(r.getRoutes())
+	} else {
+		engine.With(proxyDenyMiddleware).Route(r.config.OAuthURI, r.getRoutes())
+	}
 
 	if r.config.EnableProfiling {
 		engine.With(proxyDenyMiddleware).Route(debugURL, func(e chi.Router) {
@@ -282,6 +273,23 @@ func (r *oauthProxy) createReverseProxy() error {
 	}
 
 	return nil
+}
+
+func (r *oauthProxy) getRoutes() func(e chi.Router) {
+	return func(e chi.Router) {
+		e.MethodNotAllowed(methodNotAllowHandlder)
+		e.HandleFunc(authorizationURL, r.oauthAuthorizationHandler)
+		e.Get(r.config.CallbackName, r.oauthCallbackHandler)
+		e.Get(expiredURL, r.expirationHandler)
+		e.Get(healthURL, r.healthHandler)
+		e.Get(logoutURL, r.logoutHandler)
+		e.Get(tokenURL, r.tokenHandler)
+		e.Post(loginURL, r.loginHandler)
+		if r.config.EnableMetrics {
+			r.log.Info("enabled the service metrics middleware", zap.String("path", r.config.WithOAuthURI(metricsURL)))
+			e.Get(metricsURL, r.proxyMetricsHandler)
+		}
+	}
 }
 
 // createForwardingProxy creates a forwarding proxy
@@ -705,7 +713,7 @@ func (r *oauthProxy) newOpenIDClient() (*oidc.Client, oidc.ProviderConfig, *http
 			Secret: r.config.ClientSecret,
 		},
 		HTTPClient:     hc,
-		RedirectURL:    fmt.Sprintf("%s/oauth/callback", r.config.RedirectionURL),
+		RedirectURL:    fmt.Sprintf("%s%s", r.config.RedirectionURL, r.config.CallbackURISuffix),
 		ProviderConfig: config,
 		Scope:          append(r.config.Scopes, oidc.DefaultScope...),
 		IgnoreClaims:   r.config.IgnoreClaims,

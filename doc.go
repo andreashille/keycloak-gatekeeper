@@ -47,7 +47,6 @@ const (
 	versionHeader       = "X-Auth-Proxy-Version"
 
 	authorizationURL = "/authorize"
-	callbackURL      = "/callback"
 	expiredURL       = "/expired"
 	healthURL        = "/health"
 	loginURL         = "/login"
@@ -170,6 +169,10 @@ type Config struct {
 	OAuthURI string `json:"oauth-uri" yaml:"oauth-uri" usage:"the uri for proxy oauth endpoints" env:"OAUTH_URI"`
 	// Scopes is a list of scope we should request
 	Scopes []string `json:"scopes" yaml:"scopes" usage:"list of scopes requested when authenticating the user"`
+	// CallbackURISuffix is the callback suffix appended to redirection URL
+	CallbackURISuffix string `json:"callback-uri-suffix" yaml:"callback-uri-suffix" usage:"callback suffix appended to redirection URL, default /oauth/callback" env:"CALLBACK_SUFFIX"`
+	// CallbackName is the name of the callback suffix where the callback handler is registered, default: callback
+	CallbackName string `json:"callback-name" yaml:"callback-name" usage:"callback name, default: callback" env:"CALLBACK_NAME"`
 	// Upstream is the upstream endpoint i.e whom were proxying to
 	Upstream string `json:"upstream-url" yaml:"upstream-url" usage:"url for the upstream endpoint you wish to proxy" env:"UPSTREAM_URL"`
 	// UpstreamCA is the path to a CA certificate in PEM format to validate the upstream certificate

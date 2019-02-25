@@ -19,17 +19,15 @@ import (
 	"bytes"
 	"crypto/tls"
 	"fmt"
+	"github.com/satori/go.uuid"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
 	"reflect"
 	"testing"
-	"time"
-
-	uuid "github.com/satori/go.uuid"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 )
 
 func TestDecodeKeyPairs(t *testing.T) {

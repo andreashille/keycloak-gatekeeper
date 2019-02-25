@@ -454,6 +454,8 @@ func newFakeKeycloakConfig() *Config {
 		EnableTokenHeader:          true,
 		Listen:                     "127.0.0.1:0",
 		OAuthURI:                   "/oauth",
+		CallbackName:               "/callback",
+		CallbackURISuffix:          "/oauth/callback",
 		OpenIDProviderTimeout:      time.Second * 5,
 		Scopes:                     []string{},
 		Verbose:                    false,
