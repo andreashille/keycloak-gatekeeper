@@ -211,8 +211,7 @@ func (r *oauthProxy) oauthCallbackHandler(w http.ResponseWriter, req *http.Reque
 	}
 	if r.config.BaseURI != "" {
 		// assuming state starts with slash
-		// uncommented for a test
-		// redirectURI = r.config.BaseURI + redirectURI
+		redirectURI = r.config.BaseURI + redirectURI
 	}
 
 	r.log.Info("redirecting to: ", zap.String("redirectURI", redirectURI))
