@@ -214,6 +214,7 @@ func (r *oauthProxy) oauthCallbackHandler(w http.ResponseWriter, req *http.Reque
 		redirectURI = r.config.BaseURI + redirectURI
 	}
 
+	r.log.Info("redirecting to: ", zap.String("redirectURI", redirectURI))
 	r.redirectToURL(redirectURI, w, req, http.StatusTemporaryRedirect)
 }
 
