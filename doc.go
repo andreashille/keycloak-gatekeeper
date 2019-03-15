@@ -350,6 +350,8 @@ type Config struct {
 
 	// DisableAllLogging indicates no logging at all
 	DisableAllLogging bool `json:"disable-all-logging" yaml:"disable-all-logging" usage:"disables all logging to stdout and stderr"`
+
+	AuthResource string `json:"auth-resource" yaml:"auth-resource" usage:"adds &resource=auth-resource to the header"`
 }
 
 // getVersion returns the proxy version

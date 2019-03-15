@@ -89,6 +89,10 @@ func (r *oauthProxy) oauthAuthorizationHandler(w http.ResponseWriter, req *http.
 		zap.String("auth_url", authURL),
 		zap.String("client_ip", req.RemoteAddr))
 
+	if r.config.AuthResource == "" {
+		authURL = fmt.Sprintf("%s&resource=%s", authURL, r.config.AuthResource)
+	}
+
 	// step: if we have a custom sign in page, lets display that
 	if r.config.hasCustomSignInPage() {
 		model := make(map[string]string)
