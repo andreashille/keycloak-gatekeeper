@@ -46,6 +46,7 @@ func newDefaultConfig() *Config {
 		Headers:                       make(map[string]string),
 		LetsEncryptCacheDir:           "./cache/",
 		MatchClaims:                   make(map[string]string),
+		MaxCookieSize:                 4069,
 		MaxIdleConns:                  100,
 		MaxIdleConnsPerHost:           50,
 		OAuthURI:                      "/oauth",

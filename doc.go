@@ -248,6 +248,8 @@ type Config struct {
 	CookieAccessName string `json:"cookie-access-name" yaml:"cookie-access-name" usage:"name of the cookie use to hold the access token"`
 	// CookieRefreshName is the name of the refresh cookie
 	CookieRefreshName string `json:"cookie-refresh-name" yaml:"cookie-refresh-name" usage:"name of the cookie used to hold the encrypted refresh token"`
+	// MaxCookieSize is the name of the refresh cookie
+	MaxCookieSize int `json:"max-cookie-size" yaml:"max-cookie-size" usage:"maximum size of cookies before the cookie is split"`
 	// SecureCookie enforces the cookie as secure
 	SecureCookie bool `json:"secure-cookie" yaml:"secure-cookie" usage:"enforces the cookie to be secure"`
 	// HTTPOnlyCookie enforces the cookie as http only

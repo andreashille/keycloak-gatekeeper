@@ -49,7 +49,7 @@ func (r *oauthProxy) dropCookie(w http.ResponseWriter, host, name, value string,
 
 // maxCookieChunkSize calculates max cookie chunk size, which can be used for cookie value
 func (r *oauthProxy) getMaxCookieChunkLength(req *http.Request, cookieName string) int {
-	maxCookieChunkLength := 4069 - len(cookieName)
+	maxCookieChunkLength := r.config.MaxCookieSize - len(cookieName)
 	if r.config.CookieDomain != "" {
 		maxCookieChunkLength = maxCookieChunkLength - len(r.config.CookieDomain)
 	} else {
