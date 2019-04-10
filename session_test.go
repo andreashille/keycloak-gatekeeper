@@ -68,6 +68,7 @@ func TestGetTokenInRequest(t *testing.T) {
 	cs := []struct {
 		Token    string
 		IsBearer bool
+		IsBasic  bool
 		Error    error
 	}{
 		{
@@ -83,14 +84,26 @@ func TestGetTokenInRequest(t *testing.T) {
 			IsBearer: true,
 			Error:    nil,
 		},
+		{
+			Token:   token.Encode(),
+			IsBasic: true,
+			Error:   nil,
+		},
 	}
 	for i, x := range cs {
 		req := newFakeHTTPRequest(http.MethodGet, "/")
 		if x.Token != "" {
-			switch x.IsBearer {
-			case true:
+			if x.IsBasic {
+				req.Header.Set(authorizationHeader, "Basic "+x.Token)
+				req.AddCookie(&http.Cookie{
+					Name:   defaultName,
+					Path:   req.URL.Path,
+					Domain: req.Host,
+					Value:  x.Token,
+				})
+			} else if x.IsBearer {
 				req.Header.Set(authorizationHeader, "Bearer "+x.Token)
-			default:
+			} else {
 				req.AddCookie(&http.Cookie{
 					Name:   defaultName,
 					Path:   req.URL.Path,

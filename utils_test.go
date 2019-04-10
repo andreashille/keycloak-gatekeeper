@@ -28,6 +28,7 @@ import (
 	"os"
 	"reflect"
 	"testing"
+	"time"
 )
 
 func TestDecodeKeyPairs(t *testing.T) {

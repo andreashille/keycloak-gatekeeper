@@ -98,6 +98,10 @@ func getTokenInBearer(req *http.Request) (string, error) {
 		return "", ErrInvalidSession
 	}
 
+	if items[0] != "Bearer" {
+		return "", ErrSessionNotFound
+	}
+
 	return items[1], nil
 }
 
